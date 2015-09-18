@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Common Email Styling</title>
+<style type="text/css">
+<!--
+a, a:active, a:visited { color: #006666; text-decoration: none; }
+a:hover { color:#00CC99; text-decoration: underline; }
+BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, DD, DT {
+  font-family: Verdana, AvantGarde, Tahoma, Arial, sans-serif;
+  font-size: 10pt;
+  color: black;
+  padding: 0px;
+  margin: 20px;
+}
+H1, H2, H3, H4 { font-weight: bold; }
+h1 { font-size: 20px; }
+h2 { font-size: 16px; }
+h1, h2 { background-color: #ccccff; border: 1px solid #444444; padding: 5px; border-radius: 6px; }
+ol li, ul li { margin: 5px 0; }
+.corefile, .impt { color: red; }
+.template { color: blue; }
+img { margin-left: 20px; max-width: 95%; }
+-->
+</style>
+</head>
+
+<body>
+<h1>Common Email Styling &mdash; Zen Cart v1.5.3, v1.5.4</h1>
+<h3>Version 1.0.0</h3>
+<p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?218418-Common-Email-Styling-Support-Thread">https://www.zen-cart.com/showthread.php?218418-Common-Email-Styling-Support-Thread</a></p>
+<h2>Version History</h2>
+<ul>
+  <li>v1.0.0, 2015-09-18, Initial release.</li>
+</ul>
+
+<h2>Introduction</h2>
+<p>In the current implementation of the Zen Cart emails, each HTML email template is stand-alone.  If you want to replace the header image (header.jpg) with a beautiful gif-image that you just created, you'll edit all thirteen (13) templates<sup>1</sup>.  If you want to change the background and/or text coloring to get a consistent look-and-feel for your store, you'll edit all thirteen templates.</p>
+<hr />
+<p><sup>1</sup>I'm not counting the email_template_tell_a_friend.html file, which is no longer used by any of the as-shipped Zen Cart processing.</p>
+<hr />
+<p>This plugin modifies <b>all</b> of the built-in Zen Cart HTML email templates:</p>
+<ol>
+  <li>Uses a common set of CSS styling that applies to all emails (and newsletters) sent by your store.</li>
+  <li>Uses a common set of PHP constants to identify the logo image (and its dimensions) to be included in the emails' header.</li>
+  <li>Adds a unique HTML <b>id</b> tag to the body of each email template, using the portion of a template's file-name after the <em>email_template_</em> characters &mdash; e.g. for <code>email_template_checkout.html</code>, the id is <code>checkout</code>.</li>
+  <li>Adds a <em>viewport</em> meta tag to the email's head, making it possible to create styling for multiple screen sizes.</li>
+</ol>
+<p>Once this plugin is installed, if you want to change the name or dimensions of your HTML emails' logo, you make those changes in two (2) places &hellip; one for the store-side emails and one for those sent from your admin.  When you want to change the styling for your emails, you simply edit the file <code>/email/email_common.css</code> and the styling applies to <em>all</em> email templates.</p>
+<h3 id="customization">Customization</h3>
+<p>To customize your emails, you'll edit (using a text-file editor like <a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>) one of three files:</p>
+<ol>
+  <li><code>/email/email_common.css</code>.  This file contains the CSS styling that is applied to <b>every</b> HTML email sent from your store.</li>
+  <li><code>/includes/languages/english/YOUR_TEMPLATE/email_extras.php</code>.  This file has been updated to include constants that define the emails' logo file-name, text to be used for the alt/title tage and the image's width/height dimensions.</li>
+  <li><code>/YOUR_ADMIN/includes/languages/english/email_extras.php</code>.  This file contains the same four (4) constants as the store-side language file, which should mimic the store-side settings.</li>
+</ol>
+
+<h2>Installation</h2>
+<p>There are <span class="corefile">core-file overwrites</span> in this plugin, but no database changes; you should <strong>always</strong> backup your cart's database and files prior to making any changes.</p>
+<ol>
+  <li>After unzipping the plugin's package file, rename the YOUR_ADMIN folder to match your custom admin folder's name and the YOUR_TEMPLATE folder to match your current template's name.</li>
+  <li>Copy the plugin's files to your Zen Cart file-system:<ol>
+    <li>/email/email_common.css</li>
+    <li><span class="corefile">/email/email_template_checkout.html</span></li>
+    <li><span class="corefile">/email/email_template_contact_us.html</span></li>
+    <li><span class="corefile">/email/email_template_coupon.html</span></li>
+    <li><span class="corefile">/email/email_template_default.html</span></li>
+    <li><span class="corefile">/email/email_template_direct_mail.html</span></li>
+    <li><span class="corefile">/email/email_template_gv_mail.html</span></li>
+    <li><span class="corefile">/email/email_template_gv_queue.html</span></li>
+    <li><span class="corefile">/email/email_template_gv_send.html</span></li>
+    <li><span class="corefile">/email/email_template_low_stock.html</span></li>
+    <li><span class="corefile">/email/email_template_newsletters.html</span></li>
+    <li><span class="corefile">/email/email_template_order_status.html</span></li>
+    <li><span class="corefile">/email/email_template_password_forgotten.html</span></li>
+    <li><span class="corefile">/email/email_template_product_notification.html</span></li>
+    <li><span class="corefile">/email/email_template_welcome.html</span></li>
+    <li><span class="corefile">/includes/functions/functions_email.php</span></li>
+    <li>/includes/languages/english/YOUR_TEMPLATE/email_extras.php</li>
+    <li><span class="corefile">/YOUR_ADMIN/includes/languages/english/email_extras.php</span></li>
+  </ol></li>
+  <li>Follow the instructions in the <a href="#customization">Customization</a> section to customize the look and feel of the emails to match your store.</li>
+</ol>
+
+<h2>Uninstall</h2>
+<p>Replace all of the files copied to install the plugin with the version captured when you backed up.</p>
+
+</body>
+</html>
