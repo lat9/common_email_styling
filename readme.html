@@ -8,7 +8,7 @@
 <!--
 a, a:active, a:visited { color: #006666; text-decoration: none; }
 a:hover { color:#00CC99; text-decoration: underline; }
-BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, DD, DT {
+BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, DD, DT, hr {
   font-family: Verdana, AvantGarde, Tahoma, Arial, sans-serif;
   font-size: 10pt;
   color: black;
@@ -29,15 +29,22 @@ img { margin-left: 20px; max-width: 95%; }
 
 <body>
 <h1>Common Email Styling &mdash; Zen Cart v1.5.3, v1.5.4</h1>
-<h3>Version 1.0.0</h3>
+<h3>Version 1.1.0</h3>
 <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?218418-Common-Email-Styling-Support-Thread">https://www.zen-cart.com/showthread.php?218418-Common-Email-Styling-Support-Thread</a></p>
 <h2>Version History</h2>
 <ul>
   <li>v1.0.0, 2015-09-18, Initial release.</li>
+  <li>v1.1.0, 2015-10-02<ol>
+    <li>BUGFIX: Correct &quot;misspelling&quot; in the common CSS file.</li>
+    <li>CHANGE: Enable additional content to be added to each email's header block.</li>
+    <li>Files changed: <em>All of them!</em></li>
+    </ul></li>
+  </ol></li>
 </ul>
 
 <h2>Introduction</h2>
 <p>In the current implementation of the Zen Cart emails, each HTML email template is stand-alone.  If you want to replace the header image (header.jpg) with a beautiful gif-image that you just created, you'll edit all thirteen (13) templates<sup>1</sup>.  If you want to change the background and/or text coloring to get a consistent look-and-feel for your store, you'll edit all thirteen templates.</p>
+<p>Once <em>Common Email Styling</em> is installed, if you want to change the name or dimensions of your HTML emails' logo, you make those changes in two (2) places &hellip; one for the store-side emails and one for those sent from your admin.  When you want to change the styling for your emails, you simply edit the file <code>/email/email_common.css</code> and the styling applies to <em>all</em> email templates.</p>
 <hr />
 <p><sup>1</sup>I'm not counting the email_template_tell_a_friend.html file, which is no longer used by any of the as-shipped Zen Cart processing.</p>
 <hr />
@@ -48,13 +55,12 @@ img { margin-left: 20px; max-width: 95%; }
   <li>Adds a unique HTML <b>id</b> tag to the body of each email template, using the portion of a template's file-name after the <em>email_template_</em> characters &mdash; e.g. for <code>email_template_checkout.html</code>, the id is <code>checkout</code>.</li>
   <li>Adds a <em>viewport</em> meta tag to the email's head, making it possible to create styling for multiple screen sizes.</li>
 </ol>
-<p>Once this plugin is installed, if you want to change the name or dimensions of your HTML emails' logo, you make those changes in two (2) places &hellip; one for the store-side emails and one for those sent from your admin.  When you want to change the styling for your emails, you simply edit the file <code>/email/email_common.css</code> and the styling applies to <em>all</em> email templates.</p>
 <h3 id="customization">Customization</h3>
 <p>To customize your emails, you'll edit (using a text-file editor like <a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>) one of three files:</p>
 <ol>
   <li><code>/email/email_common.css</code>.  This file contains the CSS styling that is applied to <b>every</b> HTML email sent from your store.</li>
-  <li><code>/includes/languages/english/YOUR_TEMPLATE/email_extras.php</code>.  This file has been updated to include constants that define the emails' logo file-name, text to be used for the alt/title tage and the image's width/height dimensions.</li>
-  <li><code>/YOUR_ADMIN/includes/languages/english/email_extras.php</code>.  This file contains the same four (4) constants as the store-side language file, which should mimic the store-side settings.</li>
+  <li><code>/includes/languages/english/YOUR_TEMPLATE/email_extras.php</code>.  This file has been updated to include constants that define the emails' logo file-name, text to be used for the alt/title tage and the image's width/height dimensions.  There's also, starting with v1.1.0, a constant with which you can add some &quot;extra&quot; information to each email's logo/header area (like the store address or phone number).</li>
+  <li><code>/YOUR_ADMIN/includes/languages/english/email_extras.php</code>.  This file contains the same five (5) constants as the store-side language file, which should mimic the store-side settings.</li>
 </ol>
 
 <h2>Installation</h2>
