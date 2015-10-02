@@ -487,6 +487,9 @@
     if (!isset ($block['EMAIL_LOGO_ALT_TEXT']) || $block['EMAIL_LOGO_ALT_TEXT'] == '') $block['EMAIL_LOGO_ALT_TEXT'] = EMAIL_LOGO_ALT_TITLE_TEXT;
     if (!isset ($block['EMAIL_LOGO_WIDTH']) || $block['EMAIL_LOGO_WIDTH'] == '') $block['EMAIL_LOGO_WIDTH'] = EMAIL_LOGO_WIDTH;
     if (!isset ($block['EMAIL_LOGO_HEIGHT']) || $block['EMAIL_LOGO_HEIGHT'] == '') $block['EMAIL_LOGO_HEIGHT'] = EMAIL_LOGO_HEIGHT;
+    
+    if (!defined ('EMAIL_EXTRA_HEADER_INFO')) define ('EMAIL_EXTRA_HEADER_INFO', '');
+    if (!isset ($block['EXTRA_HEADER_INFO']) || $block['EXTRA_HEADER_INFO'] == '') $block['EXTRA_HEADER_INFO'] = EMAIL_EXTRA_HEADER_INFO;
 //-eof-common_email_styling-lat9  *** 1 of 1 ***
 
     $template_filename_base = DIR_FS_EMAIL_TEMPLATES . $langfolder . "email_template_";

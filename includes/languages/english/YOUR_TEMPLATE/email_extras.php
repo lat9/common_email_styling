@@ -6,12 +6,18 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: email_extras.php 19690 2011-10-04 16:41:45Z drbyte $
  */
-//-bof-common_email_styling-lat9-Add constants used for common email logo
+//-bof-common_email_styling-lat9-Add constants used for common email logo and header  *** 1 of 1 ***
   define ('EMAIL_LOGO_FILENAME', 'header.jpg');  //-File is present in /email folder
   define ('EMAIL_LOGO_WIDTH', '550');
   define ('EMAIL_LOGO_HEIGHT', '110');
   define ('EMAIL_LOGO_ALT_TITLE_TEXT', 'Zen Cart! The Art of E-commerce');
-//-eof-common_email_styling-lat9-Add constants used for common email logo
+  
+  // -----
+  // If you want to include some extra information in each email's header information (like perhaps the store address and/or phone number),
+  // set this value to contain the full HTML content to be copied, e.g. '<div id="extra-stuff">Extra stuff for header</div>'.
+  //
+  define ('EMAIL_EXTRA_HEADER_INFO', '');
+//-eof-common_email_styling-lat9-Add constants used for common email logo and header *** 1 of 1 ***
 
 // office use only
   define('OFFICE_FROM','<strong>From:</strong>');
